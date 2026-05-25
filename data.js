@@ -13,10 +13,10 @@ var DEFAULT_SITE_SETTINGS = {
 var BRANDS_DATA = [{{BRANDS_DATA}}];
 
 function normalizeSizeEntry(entry) {
-    if (!entry) return { size: '????', unit: '????', price: 0 };
-    var unit = entry.unit === 'g' ? 'g' : (entry.unit === '????' ? '????' : 'ml');
+    if (!entry) return { size: '-', unit: 'cm', price: 0 };
+    var unit = entry.unit || 'cm';
     return {
-        size: String(entry.size || '????').trim() || '????',
+        size: String(entry.size || '-').trim() || '-',
         unit: unit,
         price: Number(entry.price) || 0
     };
@@ -90,15 +90,17 @@ function normalizeSettings(settings) {
 }
 
 function getSizeData(product, sizeIdx) {
-    if (!product || !Array.isArray(product.sizes) || !product.sizes.length) return { size: '????', unit: '????', price: 0 };
+    if (!product || !Array.isArray(product.sizes) || !product.sizes.length) return { size: '-', unit: '', price: product ? product.price || 0 : 0 };
     var safeIndex = Math.max(0, Math.min(Number(sizeIdx) || 0, product.sizes.length - 1));
     return product.sizes[safeIndex];
 }
 
 function getUnitLabel(unit) {
-    if (unit === 'g') return '????';
-    if (unit === '????') return '';
-    return '??';
+    if (unit === 'g') return 'غرام';
+    if (unit === 'cm') return 'سم';
+    if (unit === 'ml') return 'مل';
+    if (unit === 'قطعة') return '';
+    return '';
 }
 
 function getSizeLabel(sizeData) {
@@ -158,7 +160,7 @@ function normalizeCartItems(cartItems, productsList) {
 }
 
 function formatCurrency(value) {
-    return '?' + (Number(value) || 0);
+    return '\u20AA' + (Number(value) || 0);
 }
 
 function formatDateTime(dateValue) {
