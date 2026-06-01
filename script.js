@@ -973,8 +973,33 @@ function openPDP(productId) {
         addBtn.style.background = '';
     }
 
+    renderRelatedProducts(product);
     document.getElementById('pdpModal').style.display = 'flex';
     document.body.style.overflow = 'hidden';
+}
+
+function renderRelatedProducts(product) {
+    var container = document.getElementById('pdpRelatedGrid');
+    var section = document.getElementById('pdpRelated');
+    if (!container || !section) return;
+
+    var related = products.filter(function (p) {
+        return p.id !== product.id && (p.category === product.category || p.brand === product.brand);
+    }).slice(0, 4);
+
+    if (related.length === 0) {
+        section.style.display = 'none';
+        return;
+    }
+
+    section.style.display = 'block';
+    container.innerHTML = related.map(function (p) {
+        var pricing = getFinalPrice(p, 0, discounts);
+        return '<div class="pdp-related-item" onclick="openPDP(\'' + p.id + '\')">' +
+            '<img src="' + p.image + '" alt="' + p.name + '" onerror="this.src=\'' + FALLBACK_IMAGE + '\'">' +
+            '<div class="related-info"><p>' + p.name + '</p><span>' + formatCurrency(pricing.final) + '</span></div>' +
+            '</div>';
+    }).join('');
 }
 
 function renderPDPSizeOptions() {
