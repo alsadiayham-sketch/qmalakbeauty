@@ -173,7 +173,7 @@ body.has-banner .mobile-menu { top: 102px; }
     justify-content: center;
     text-align: center;
     position: relative;
-    background: url('hero-bg.png') center center / cover no-repeat;
+    background: url('hero-bg.jpg') center center / cover no-repeat;
     padding-top: 80px;
 }
 
