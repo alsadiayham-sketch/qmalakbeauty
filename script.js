@@ -11,9 +11,6 @@ var currentPDPSizeIdx = 0;
 var pdpQty = 1;
 var usedFallbackData = false;
 var unsubscribers = [];
-var packagingBuilderSets = [];
-var editingCustomPackageId = '';
-
 var storeLoadState = {
     products: false,
     discounts: false,
@@ -25,8 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     renderBrands();
     setupSearch('navSearchInput', 'navSearchDropdown');
     setupSearch('productsSearchInput', 'productsSearchDropdown');
-    initializePackagingBuilder();
-    initializeOrderTracking();
+initializeOrderTracking();
     updateCartBadge();
     updateCheckoutLink(cart.length ? updateCartTotal() : 0);
     setDeliveryMethod(deliveryMethod);
