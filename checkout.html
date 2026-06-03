@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sard Chocolate | إتمام الطلب</title>
+    <title>Q Malak Beauty | إتمام الطلب</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
@@ -79,7 +79,7 @@
 <body>
     <nav class="navbar">
         <div class="container nav-container" style="justify-content: space-between;">
-            <a href="index.html" class="logo"><img src="logo.png" alt="Sard Chocolate" class="logo-img"><span class="logo-text" style="font-size:1rem;">Sard Chocolate</span></a>
+            <a href="index.html" class="logo"><img src="logo.png" alt="Q Malak Beauty" class="logo-img"><span class="logo-text" style="font-size:1rem;">Q Malak Beauty</span></a>
             <a href="index.html" style="color: var(--primary-dark); text-decoration: none; font-weight: 600; font-size: 0.95rem; white-space: nowrap; padding: 8px 20px; margin-left: 10px;">← الرئيسية</a>
         </div>
     </nav>
@@ -102,8 +102,8 @@
         var products = normalizeProducts(DEFAULT_PRODUCTS);
         var discounts = normalizeDiscounts(DEFAULT_DISCOUNTS);
         var siteSettings = normalizeSettings(DEFAULT_SITE_SETTINGS);
-        var cart = normalizeCartItems(JSON.parse(localStorage.getItem('sardchocolate_cart') || '[]'), products);
-        var selectedDelivery = localStorage.getItem('sardchocolate_delivery_method') || 'delivery';
+        var cart = normalizeCartItems(JSON.parse(localStorage.getItem('qmalakbeauty_cart') || '[]'), products);
+        var selectedDelivery = localStorage.getItem('qmalakbeauty_delivery_method') || 'delivery';
         var selectedRegion = '';
 
         var DELIVERY_COSTS = { westbank: 20, jerusalem: 30, inside: 50 };
@@ -112,7 +112,7 @@
         document.addEventListener('DOMContentLoaded', initializeCheckout);
 
         function initializeCheckout() {
-            cart = normalizeCartItems(JSON.parse(localStorage.getItem('sardchocolate_cart') || '[]'), products);
+            cart = normalizeCartItems(JSON.parse(localStorage.getItem('qmalakbeauty_cart') || '[]'), products);
             saveCart();
             render();
             setStatus('');
@@ -139,7 +139,7 @@
                     }
                     discounts = discountsSnap.docs.map(function (docSnap) { return normalizeDiscount(docSnap.data()); });
                     siteSettings = normalizeSettings(settingsSnap.exists ? settingsSnap.data() : DEFAULT_SITE_SETTINGS);
-                    cart = normalizeCartItems(JSON.parse(localStorage.getItem('sardchocolate_cart') || '[]'), products);
+                    cart = normalizeCartItems(JSON.parse(localStorage.getItem('qmalakbeauty_cart') || '[]'), products);
                     saveCart();
                     render();
                 }).catch(function (error) {
@@ -263,14 +263,14 @@
         }
 
         function saveCart() {
-            localStorage.setItem('sardchocolate_cart', JSON.stringify(normalizeCartItems(cart, products)));
+            localStorage.setItem('qmalakbeauty_cart', JSON.stringify(normalizeCartItems(cart, products)));
         }
 
         function selectDelivery(method) {
             var formData = getFormValues();
             selectedDelivery = method;
             if (method === 'pickup') selectedRegion = '';
-            localStorage.setItem('sardchocolate_delivery_method', method);
+            localStorage.setItem('qmalakbeauty_delivery_method', method);
             render();
             restoreFormValues(formData);
         }
@@ -449,8 +449,8 @@
             }
 
             db.collection('orders').doc(order.id).set(order).then(function () {
-                localStorage.setItem('sardchocolate_last_order', JSON.stringify(order));
-                localStorage.setItem('sardchocolate_cart', '[]');
+                localStorage.setItem('qmalakbeauty_last_order', JSON.stringify(order));
+                localStorage.setItem('qmalakbeauty_cart', '[]');
                 cart = [];
                 showOrderSuccess(order);
             }).catch(function (error) {

@@ -1,348 +1,62 @@
-// Seed data for Sard Chocolate
-// Run via: window.seedFirestoreData(true)
+var SEED_PRODUCTS = [
+    { id: 1, name: 'لوشن الجسم المرطب', brand: 'Q Malak', category: 'لوشن', sizes: [{ size: '250', unit: 'ml', price: 55 }, { size: '500', unit: 'ml', price: 85 }], discount: 0, image: 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&h=400&fit=crop', status: 'bestseller' },
+    { id: 2, name: 'كريم مرطب للوجه', brand: 'Q Malak', category: 'كريمات', sizes: [{ size: '50', unit: 'ml', price: 45 }, { size: '100', unit: 'ml', price: 75 }], discount: 0, image: 'https://images.unsplash.com/photo-1570194065650-d99fb4b38b17?w=400&h=400&fit=crop', status: 'bestseller' },
+    { id: 3, name: 'واقي شمس SPF50', brand: 'Q Malak', category: 'واقي شمس', sizes: [{ size: '50', unit: 'ml', price: 40 }, { size: '100', unit: 'ml', price: 65 }], discount: 0, image: 'https://images.unsplash.com/photo-1532947974-1cb1fbd48f30?w=400&h=400&fit=crop', status: 'normal' },
+    { id: 4, name: 'سيروم فيتامين سي', brand: 'Q Malak', category: 'سيروم', sizes: [{ size: '30', unit: 'ml', price: 60 }], discount: 0, image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&h=400&fit=crop', status: 'special' },
+    { id: 5, name: 'غسول الوجه الرغوي', brand: 'Q Malak', category: 'غسول', sizes: [{ size: '150', unit: 'ml', price: 35 }, { size: '250', unit: 'ml', price: 50 }], discount: 0, image: 'https://images.unsplash.com/photo-1556228841-a3c527ebefe5?w=400&h=400&fit=crop', status: 'normal' },
+    { id: 6, name: 'كريم ليلي مغذي', brand: 'Q Malak', category: 'كريمات', sizes: [{ size: '50', unit: 'ml', price: 55 }], discount: 0, image: 'https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=400&h=400&fit=crop', status: 'bestseller' },
+    { id: 7, name: 'تونر ماء الورد', brand: 'Q Malak', category: 'تونر', sizes: [{ size: '150', unit: 'ml', price: 30 }, { size: '250', unit: 'ml', price: 45 }], discount: 0, image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=400&h=400&fit=crop', status: 'normal' },
+    { id: 8, name: 'سيروم حمض الهيالورونيك', brand: 'Q Malak', category: 'سيروم', sizes: [{ size: '30', unit: 'ml', price: 65 }], discount: 0, image: 'https://images.unsplash.com/photo-1615397349754-cfa2066a298e?w=400&h=400&fit=crop', status: 'special' },
+    { id: 9, name: 'كريم تفتيح البشرة', brand: 'Q Malak', category: 'كريمات', sizes: [{ size: '50', unit: 'ml', price: 50 }, { size: '100', unit: 'ml', price: 80 }], discount: 0, image: 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=400&h=400&fit=crop', status: 'normal' },
+    { id: 10, name: 'زيت الأرغان للشعر', brand: 'Q Malak', category: 'زيوت', sizes: [{ size: '50', unit: 'ml', price: 45 }, { size: '100', unit: 'ml', price: 70 }], discount: 0, image: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&h=400&fit=crop', status: 'normal' },
+    { id: 11, name: 'ماسك الطين الطبيعي', brand: 'Q Malak', category: 'ماسكات', sizes: [{ size: '100', unit: 'g', price: 35 }, { size: '200', unit: 'g', price: 55 }], discount: 0, image: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400&h=400&fit=crop', status: 'normal' },
+    { id: 12, name: 'كريم اليدين بالجليسرين', brand: 'Q Malak', category: 'كريمات', sizes: [{ size: '75', unit: 'ml', price: 25 }], discount: 0, image: 'https://images.unsplash.com/photo-1585652757141-8837d027aa04?w=400&h=400&fit=crop', status: 'normal' },
+    { id: 13, name: 'مقشر الجسم بالسكر', brand: 'Q Malak', category: 'مقشرات', sizes: [{ size: '200', unit: 'g', price: 40 }, { size: '350', unit: 'g', price: 60 }], discount: 0, image: 'https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=400&h=400&fit=crop', status: 'bestseller' },
+    { id: 14, name: 'جل الصبار المهدئ', brand: 'Q Malak', category: 'جل', sizes: [{ size: '150', unit: 'ml', price: 30 }, { size: '250', unit: 'ml', price: 45 }], discount: 0, image: 'https://images.unsplash.com/photo-1596178065887-1198b6148b2b?w=400&h=400&fit=crop', status: 'normal' },
+    { id: 15, name: 'كريم العين مضاد للتجاعيد', brand: 'Q Malak', category: 'كريمات', sizes: [{ size: '15', unit: 'ml', price: 45 }], discount: 0, image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop', status: 'special' },
+    { id: 16, name: 'بخاخ ماء الورد المنعش', brand: 'Q Malak', category: 'تونر', sizes: [{ size: '100', unit: 'ml', price: 25 }, { size: '200', unit: 'ml', price: 40 }], discount: 0, image: 'https://images.unsplash.com/photo-1629198688000-71f23e745571?w=400&h=400&fit=crop', status: 'normal' },
+    { id: 17, name: 'زبدة الشيا للجسم', brand: 'Q Malak', category: 'لوشن', sizes: [{ size: '150', unit: 'g', price: 40 }, { size: '300', unit: 'g', price: 65 }], discount: 0, image: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=400&h=400&fit=crop', status: 'normal' },
+    { id: 18, name: 'سيروم الريتينول', brand: 'Q Malak', category: 'سيروم', sizes: [{ size: '30', unit: 'ml', price: 70 }], discount: 0, image: 'https://images.unsplash.com/photo-1617897903246-719242758050?w=400&h=400&fit=crop', status: 'normal' },
+    { id: 19, name: 'كريم القدمين المرطب', brand: 'Q Malak', category: 'كريمات', sizes: [{ size: '75', unit: 'ml', price: 20 }, { size: '150', unit: 'ml', price: 35 }], discount: 0, image: 'https://images.unsplash.com/photo-1601049676869-702ea24cfd58?w=400&h=400&fit=crop', status: 'normal' },
+    { id: 20, name: 'مجموعة العناية الكاملة', brand: 'Q Malak', category: 'مجموعات', sizes: [{ size: '1', unit: 'قطعة', price: 180 }], discount: 10, image: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400&h=400&fit=crop', status: 'special' },
+    { id: 21, name: 'بلسم الشفاه بالعسل', brand: 'Q Malak', category: 'كريمات', sizes: [{ size: '10', unit: 'g', price: 15 }], discount: 0, image: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400&h=400&fit=crop', status: 'normal' },
+    { id: 22, name: 'ماسك الكولاجين', brand: 'Q Malak', category: 'ماسكات', sizes: [{ size: '5', unit: 'قطعة', price: 30 }], discount: 0, image: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400&h=400&fit=crop', status: 'bestseller' }
+];
 
-window.seedFirestoreData = function(clearExisting) {
-    var db = firebase.firestore();
-    var projectRef = db.collection('projects').doc('sardchocolate');
+var SEED_DISCOUNTS = [];
 
-    var products = [
-        {
-            name: 'شوكولاتة داكنة 70%',
-            brand: 'سرد',
-            category: 'شوكولاتة داكنة',
-            price: 25,
-            image: 'https://images.unsplash.com/photo-1548907040-4baa42d10919?w=400&h=400&fit=crop',
-            description: 'شوكولاتة داكنة فاخرة بنسبة كاكاو 70% - طعم غني ومميز',
-            status: 'bestseller',
-            inStock: true,
-            order: 1
-        },
-        {
-            name: 'ترافل شوكولاتة كلاسيك',
-            brand: 'سرد',
-            category: 'ترافل',
-            price: 35,
-            image: 'https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=400&h=400&fit=crop',
-            description: 'ترافل شوكولاتة كلاسيكي بحشوة كريمية ذائبة',
-            status: 'bestseller',
-            inStock: true,
-            order: 2
-        },
-        {
-            name: 'شوكولاتة بالحليب',
-            brand: 'سرد',
-            category: 'شوكولاتة حليب',
-            price: 20,
-            image: 'https://images.unsplash.com/photo-1587132137056-bfbf0166836e?w=400&h=400&fit=crop',
-            description: 'شوكولاتة حليب ناعمة وكريمية بمذاق لا يقاوم',
-            status: '',
-            inStock: true,
-            order: 3
-        },
-        {
-            name: 'بوكس هدية فاخر - 24 قطعة',
-            brand: 'سرد',
-            category: 'بوكسات هدايا',
-            price: 120,
-            image: 'https://images.unsplash.com/photo-1526081347589-7fa3cb41b4b2?w=400&h=400&fit=crop',
-            description: 'بوكس هدية أنيق يحتوي على 24 قطعة شوكولاتة متنوعة',
-            status: 'special',
-            inStock: true,
-            order: 4
-        },
-        {
-            name: 'شوكولاتة بالبندق',
-            brand: 'سرد',
-            category: 'شوكولاتة محشية',
-            price: 30,
-            image: 'https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=400&h=400&fit=crop',
-            description: 'شوكولاتة فاخرة محشية بالبندق المحمص الكامل',
-            status: 'bestseller',
-            inStock: true,
-            order: 5
-        },
-        {
-            name: 'ترافل كراميل مملح',
-            brand: 'سرد',
-            category: 'ترافل',
-            price: 38,
-            image: 'https://images.unsplash.com/photo-1551529834-525807d6b4f3?w=400&h=400&fit=crop',
-            description: 'ترافل بحشوة كراميل مملح ذائبة مغطى بشوكولاتة داكنة',
-            status: 'special',
-            inStock: true,
-            order: 6
-        },
-        {
-            name: 'شوكولاتة بيضاء بالفراولة',
-            brand: 'سرد',
-            category: 'شوكولاتة بيضاء',
-            price: 28,
-            image: 'https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?w=400&h=400&fit=crop',
-            description: 'شوكولاتة بيضاء كريمية بنكهة الفراولة الطبيعية',
-            status: '',
-            inStock: true,
-            order: 7
-        },
-        {
-            name: 'بوكس مناسبات - 36 قطعة',
-            brand: 'سرد',
-            category: 'بوكسات هدايا',
-            price: 180,
-            image: 'https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?w=400&h=400&fit=crop',
-            description: 'بوكس مناسبات راقي يحتوي على 36 قطعة شوكولاتة مشكلة',
-            status: 'special',
-            inStock: true,
-            order: 8
-        },
-        {
-            name: 'شوكولاتة بالفستق',
-            brand: 'سرد',
-            category: 'شوكولاتة محشية',
-            price: 35,
-            image: 'https://images.unsplash.com/photo-1616696701878-1d06dcf22be8?w=400&h=400&fit=crop',
-            description: 'شوكولاتة فاخرة محشية بكريمة الفستق الحلبي',
-            status: 'bestseller',
-            inStock: true,
-            order: 9
-        },
-        {
-            name: 'ترافل ماتشا',
-            brand: 'سرد',
-            category: 'ترافل',
-            price: 40,
-            image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&h=400&fit=crop',
-            description: 'ترافل بنكهة الماتشا اليابانية الأصلية مع شوكولاتة بيضاء',
-            status: '',
-            inStock: true,
-            order: 10
-        },
-        {
-            name: 'شوكولاتة داكنة بالبرتقال',
-            brand: 'سرد',
-            category: 'شوكولاتة داكنة',
-            price: 27,
-            image: 'https://images.unsplash.com/photo-1542843137-8791a6904d14?w=400&h=400&fit=crop',
-            description: 'شوكولاتة داكنة بزيت البرتقال الطبيعي - مزيج منعش',
-            status: '',
-            inStock: true,
-            order: 11
-        },
-        {
-            name: 'بوكس صغير - 12 قطعة',
-            brand: 'سرد',
-            category: 'بوكسات هدايا',
-            price: 65,
-            image: 'https://images.unsplash.com/photo-1582176604856-e644f0cb4020?w=400&h=400&fit=crop',
-            description: 'بوكس صغير أنيق مثالي كهدية - 12 قطعة متنوعة',
-            status: '',
-            inStock: true,
-            order: 12
-        },
-        {
-            name: 'شوكولاتة حليب بالكراميل',
-            brand: 'سرد',
-            category: 'شوكولاتة حليب',
-            price: 22,
-            image: 'https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=400&h=400&fit=crop',
-            description: 'شوكولاتة حليب كريمية بحشوة كراميل ذائبة',
-            status: '',
-            inStock: true,
-            order: 13
-        },
-        {
-            name: 'ترافل لوتس',
-            brand: 'سرد',
-            category: 'ترافل',
-            price: 38,
-            image: 'https://images.unsplash.com/photo-1571506165871-ee72a35bc9d4?w=400&h=400&fit=crop',
-            description: 'ترافل بحشوة كريمة اللوتس المميزة مع شوكولاتة حليب',
-            status: 'bestseller',
-            inStock: true,
-            order: 14
-        },
-        {
-            name: 'شوكولاتة بالجوز',
-            brand: 'سرد',
-            category: 'شوكولاتة محشية',
-            price: 32,
-            image: 'https://images.unsplash.com/photo-1575377427642-087cf684f29d?w=400&h=400&fit=crop',
-            description: 'شوكولاتة فاخرة بقطع الجوز المحمص',
-            status: '',
-            inStock: true,
-            order: 15
-        },
-        {
-            name: 'شوكولاتة بيضاء بالتوت',
-            brand: 'سرد',
-            category: 'شوكولاتة بيضاء',
-            price: 28,
-            image: 'https://images.unsplash.com/photo-1587132117083-5b4f83ea2f5b?w=400&h=400&fit=crop',
-            description: 'شوكولاتة بيضاء مع قطع التوت المجفف',
-            status: '',
-            inStock: true,
-            order: 16
-        },
-        {
-            name: 'بوكس VIP - 48 قطعة',
-            brand: 'سرد',
-            category: 'بوكسات هدايا',
-            price: 250,
-            image: 'https://images.unsplash.com/photo-1548741487-18d363dc4469?w=400&h=400&fit=crop',
-            description: 'بوكس VIP فاخر - 48 قطعة شوكولاتة مميزة بتغليف حصري',
-            status: 'special',
-            inStock: true,
-            order: 17
-        },
-        {
-            name: 'ترافل نوتيلا',
-            brand: 'سرد',
-            category: 'ترافل',
-            price: 36,
-            image: 'https://images.unsplash.com/photo-1587132137056-bfbf0166836e?w=400&h=400&fit=crop',
-            description: 'ترافل بحشوة نوتيلا كريمية مغطى بشوكولاتة حليب',
-            status: '',
-            inStock: true,
-            order: 18
-        },
-        {
-            name: 'شوكولاتة داكنة 85%',
-            brand: 'سرد',
-            category: 'شوكولاتة داكنة',
-            price: 30,
-            image: 'https://images.unsplash.com/photo-1553452118-621e1f860f43?w=400&h=400&fit=crop',
-            description: 'شوكولاتة داكنة للخبراء بنسبة كاكاو 85% - مرة ومميزة',
-            status: '',
-            inStock: true,
-            order: 19
-        },
-        {
-            name: 'شوكولاتة باللوز',
-            brand: 'سرد',
-            category: 'شوكولاتة محشية',
-            price: 32,
-            image: 'https://images.unsplash.com/photo-1614088685112-0a760b71a3c8?w=400&h=400&fit=crop',
-            description: 'شوكولاتة بقطع اللوز المحمص الكبيرة',
-            status: '',
-            inStock: true,
-            order: 20
-        },
-        {
-            name: 'بوكس أعراس مخصص',
-            brand: 'سرد',
-            category: 'بوكسات هدايا',
-            price: 15,
-            image: 'https://images.unsplash.com/photo-1511381939415-e44015466834?w=400&h=400&fit=crop',
-            description: 'بوكس أعراس مخصص - قطعة واحدة بتغليف خاص (الحد الأدنى 50 قطعة)',
-            status: 'special',
-            inStock: true,
-            order: 21
-        },
-        {
-            name: 'ترافل زعفران',
-            brand: 'سرد',
-            category: 'ترافل',
-            price: 45,
-            image: 'https://images.unsplash.com/photo-1587132117083-5b4f83ea2f5b?w=400&h=400&fit=crop',
-            description: 'ترافل فاخر بالزعفران الأصلي - إصدار محدود',
-            status: 'special',
-            inStock: true,
-            order: 22
-        },
-        {
-            name: 'شوكولاتة حليب بالكوكيز',
-            brand: 'سرد',
-            category: 'شوكولاتة حليب',
-            price: 24,
-            image: 'https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=400&h=400&fit=crop',
-            description: 'شوكولاتة حليب بقطع الكوكيز المقرمشة',
-            status: '',
-            inStock: true,
-            order: 23
-        },
-        {
-            name: 'شوكولاتة بيضاء بالمانجو',
-            brand: 'سرد',
-            category: 'شوكولاتة بيضاء',
-            price: 28,
-            image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&h=400&fit=crop',
-            description: 'شوكولاتة بيضاء استوائية بنكهة المانجو الطبيعية',
-            status: '',
-            inStock: true,
-            order: 24
-        }
-    ];
-
-    var discounts = [
-        {
-            type: 'category',
-            value: 'ترافل',
-            percentage: 15,
-            message: 'خصم 15% على جميع الترافل',
-            active: true,
-            expiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
-        },
-        {
-            type: 'category',
-            value: 'بوكسات هدايا',
-            percentage: 10,
-            message: 'خصم 10% على بوكسات الهدايا',
-            active: true,
-            expiresAt: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString()
-        }
-    ];
-
-    var settings = {
-        whatsapp: '970595455369',
-        heroSubtitle: 'شوكولاتة فاخرة مصنوعة بحب وعناية',
-        aboutText: 'سرد شوكولاتة - مصنع شوكولاتة فلسطيني متخصص بصناعة الشوكولاتة الفاخرة والترافل والبوكسات المخصصة.\nنقدم لكم أجود أنواع الشوكولاتة بأيدي فلسطينية ماهرة مع إمكانية التخصيص الكامل لجميع المناسبات.',
-        instagram: 'https://www.instagram.com/sardchocolate.ps/',
-        tiktok: ''
-    };
-
-    function doSeed() {
-        var batch = db.batch();
-        var productsRef = projectRef.collection('products');
-        var discountsRef = projectRef.collection('discounts');
-        var settingsRef = projectRef.collection('settings');
-
-        if (clearExisting) {
-            console.log('Seeding with clear mode - adding all products...');
-        }
-
-        products.forEach(function(product, index) {
-            var docRef = productsRef.doc('prod_' + (index + 1));
-            product.createdAt = firebase.firestore.FieldValue.serverTimestamp();
-            batch.set(docRef, product);
-        });
-
-        discounts.forEach(function(discount, index) {
-            var docRef = discountsRef.doc('disc_' + (index + 1));
-            batch.set(docRef, discount);
-        });
-
-        batch.set(settingsRef.doc('general'), settings);
-
-        return batch.commit().then(function() {
-            console.log('Seeded ' + products.length + ' products, ' + discounts.length + ' discounts, and settings.');
-            return products.length;
-        });
-    }
-
-    if (clearExisting) {
-        return projectRef.collection('products').get().then(function(snapshot) {
-            var deleteBatch = db.batch();
-            snapshot.forEach(function(doc) { deleteBatch.delete(doc.ref); });
-            return deleteBatch.commit();
-        }).then(function() {
-            return projectRef.collection('discounts').get();
-        }).then(function(snapshot) {
-            var deleteBatch = db.batch();
-            snapshot.forEach(function(doc) { deleteBatch.delete(doc.ref); });
-            return deleteBatch.commit();
-        }).then(function() {
-            return doSeed();
-        });
-    } else {
-        return doSeed();
-    }
+var SEED_SETTINGS = {
+    whatsappNumber: '972569236758',
+    heroSubtitle: 'منتجات عناية بالبشرة والجسم بأعلى جودة',
+    aboutText: 'Q Malak Beauty - متجر متخصص بمنتجات العناية بالبشرة والجسم.\nنقدم مجموعة واسعة من الكريمات والمستحضرات الطبيعية عالية الجودة.\nمنتجاتنا مناسبة لجميع أنواع البشرة مع توصيل لكل المناطق.',
+    instagramLink: 'https://www.instagram.com/qmalakbeauty/',
+    tiktokLink: ''
 };
+
+function seedFirestoreData(forceOverwrite) {
+    var db = firebase.firestore();
+    var projectId = 'qmalakbeauty';
+    var batch = db.batch();
+
+    SEED_PRODUCTS.forEach(function(product) {
+        var ref = db.collection('projects').doc(projectId).collection('products').doc(String(product.id));
+        batch.set(ref, product);
+    });
+
+    SEED_DISCOUNTS.forEach(function(discount) {
+        var ref = db.collection('projects').doc(projectId).collection('discounts').doc(String(discount.id));
+        batch.set(ref, discount);
+    });
+
+    var settingsRef = db.collection('projects').doc(projectId).collection('settings').doc('general');
+    batch.set(settingsRef, SEED_SETTINGS);
+
+    return batch.commit().then(function() {
+        console.log('Seeded ' + SEED_PRODUCTS.length + ' products successfully!');
+        return SEED_PRODUCTS.length;
+    });
+}
+
+if (typeof window !== 'undefined') {
+    window.seedFirestoreData = seedFirestoreData;
+}

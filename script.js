@@ -1,11 +1,11 @@
-var FALLBACK_IMAGE = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect fill='%234a2c17' width='400' height='400'/%3E%3Ctext fill='%23d4a574' font-family='Arial' font-size='40' x='50%25' y='45%25' text-anchor='middle'%3E🍫%3C/text%3E%3Ctext fill='%23d4a574' font-family='Arial' font-size='20' x='50%25' y='60%25' text-anchor='middle'%3ESard Chocolate%3C/text%3E%3C/svg%3E";
+﻿var FALLBACK_IMAGE = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect fill='%234a2c17' width='400' height='400'/%3E%3Ctext fill='%23d4a574' font-family='Arial' font-size='40' x='50%25' y='45%25' text-anchor='middle'%3E🍫%3C/text%3E%3Ctext fill='%23d4a574' font-family='Arial' font-size='20' x='50%25' y='60%25' text-anchor='middle'%3EQ Malak Beauty%3C/text%3E%3C/svg%3E";
 
 var products = [];
 var discounts = [];
 var siteSettings = normalizeSettings(DEFAULT_SITE_SETTINGS);
 var currentFilter = 'all';
-var cart = normalizeCartItems(JSON.parse(localStorage.getItem('sardchocolate_cart') || '[]'), normalizeProducts(DEFAULT_PRODUCTS));
-var deliveryMethod = localStorage.getItem('sardchocolate_delivery_method') || 'delivery';
+var cart = normalizeCartItems(JSON.parse(localStorage.getItem('qmalakbeauty_cart') || '[]'), normalizeProducts(DEFAULT_PRODUCTS));
+var deliveryMethod = localStorage.getItem('qmalakbeauty_delivery_method') || 'delivery';
 var currentPDPProduct = null;
 var currentPDPSizeIdx = 0;
 var pdpQty = 1;
@@ -935,12 +935,12 @@ function updateCheckoutLink(total) {
 }
 
 function saveCart() {
-    localStorage.setItem('sardchocolate_cart', JSON.stringify(normalizeCartItems(cart, products.length ? products : normalizeProducts(DEFAULT_PRODUCTS))));
+    localStorage.setItem('qmalakbeauty_cart', JSON.stringify(normalizeCartItems(cart, products.length ? products : normalizeProducts(DEFAULT_PRODUCTS))));
 }
 
 function setDeliveryMethod(method) {
     deliveryMethod = method;
-    localStorage.setItem('sardchocolate_delivery_method', method);
+    localStorage.setItem('qmalakbeauty_delivery_method', method);
     var pickupBtn = document.getElementById('optPickup');
     var deliveryBtn = document.getElementById('optDelivery');
     if (pickupBtn) pickupBtn.classList.toggle('active', method === 'pickup');

@@ -1,16 +1,16 @@
-var DEFAULT_PRODUCTS = [];
+﻿var DEFAULT_PRODUCTS = [];
 
 var DEFAULT_DISCOUNTS = [];
 
 var DEFAULT_SITE_SETTINGS = {
-    whatsappNumber: '970595455369',
-    heroSubtitle: 'شوكولاتة فاخرة بتغليف مخصص حسب ذوقك',
-    aboutText: 'سرد شوكولاتة - مصنع شوكولاتة فلسطيني متخصص بصناعة أجود أنواع الشوكولاتة يدوياً.\nنقدم تغليف مخصص وتشكيلات فريدة لكل المناسبات.\nاختاري الألوان والحشوات والأنواع اللي بتحبيها وخلينا نجهزلك أحلى علبة.',
-    instagramLink: 'https://www.instagram.com/sardchocolate.ps/',
+    whatsappNumber: '972569236758',
+    heroSubtitle: 'منتجات عناية بالبشرة والجسم بأعلى جودة',
+    aboutText: 'Q Malak Beauty - متجر متخصص بمنتجات العناية بالبشرة والجسم.\nنقدم مجموعة واسعة من الكريمات والمستحضرات الطبيعية عالية الجودة.\nمنتجاتنا مناسبة لجميع أنواع البشرة مع توصيل لكل المناطق.',
+    instagramLink: 'https://www.instagram.com/qmalakbeauty/',
     tiktokLink: ''
 };
 
-var BRANDS_DATA = [{ name: 'شوكولاتة داكنة', logo: 'https://images.unsplash.com/photo-1481391319762-47dff72954d9?w=100&h=100&fit=crop' }, { name: 'شوكولاتة بالحليب', logo: 'https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=100&h=100&fit=crop' }, { name: 'شوكولاتة بيضاء', logo: 'https://images.unsplash.com/photo-1587132137056-bfbf0166836e?w=100&h=100&fit=crop' }, { name: 'تغليف مخصص', logo: 'https://images.unsplash.com/photo-1511381939415-e44015466834?w=100&h=100&fit=crop' }];
+var BRANDS_DATA = [{ name: 'لوشن الجسم', logo: 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=100&h=100&fit=crop' }, { name: 'كريمات الوجه', logo: 'https://images.unsplash.com/photo-1570194065650-d99fb4b38b17?w=100&h=100&fit=crop' }, { name: 'واقي شمس', logo: 'https://images.unsplash.com/photo-1532947974-1cb1fbd48f30?w=100&h=100&fit=crop' }, { name: 'سيروم', logo: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=100&h=100&fit=crop' }];
 
 function normalizeSizeEntry(entry) {
     if (!entry) return { size: '-', unit: 'cm', price: 0 };

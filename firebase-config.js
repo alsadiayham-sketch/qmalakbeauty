@@ -19,7 +19,7 @@
     }
 
     var rawDb = firebase.firestore();
-    var PROJECT_ID = 'sardchocolate';
+    var PROJECT_ID = 'qmalakbeauty';
     var projectRef = rawDb.collection('projects').doc(PROJECT_ID);
 
     var db = {
