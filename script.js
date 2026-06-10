@@ -1,4 +1,4 @@
-﻿var FALLBACK_IMAGE = "data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27300%27 height=%27300%27 viewBox=%270 0 300 300%27%3E%3Crect width=%27300%27 height=%27300%27 fill=%27%23FFF5F7%27/%3E%3Ctext x=%27150%27 y=%27140%27 text-anchor=%27middle%27 font-family=%27Georgia%27 font-size=%2760%27 fill=%27%23C06B84%27%3EQ%3C/text%3E%3Ctext x=%27150%27 y=%27185%27 text-anchor=%27middle%27 font-family=%27Georgia%27 font-size=%2718%27 fill=%27%23C8956C%27%3EMALAK BEAUTY%3C/text%3E%3C/svg%3E";
+var FALLBACK_IMAGE = "data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27300%27 height=%27300%27 viewBox=%270 0 300 300%27%3E%3Crect width=%27300%27 height=%27300%27 fill=%27%23FFF5F7%27/%3E%3Ctext x=%27150%27 y=%27140%27 text-anchor=%27middle%27 font-family=%27Georgia%27 font-size=%2760%27 fill=%27%23C06B84%27%3EQ%3C/text%3E%3Ctext x=%27150%27 y=%27185%27 text-anchor=%27middle%27 font-family=%27Georgia%27 font-size=%2718%27 fill=%27%23C8956C%27%3EMALAK BEAUTY%3C/text%3E%3C/svg%3E";
 
 var products = [];
 var discounts = [];
@@ -249,7 +249,7 @@ function renderProducts(productsToShow) {
         var discountBadge = pricing.hasDiscount ? '<span class="discount-badge">-' + pricing.discountPercent + '%</span>' : '';
         var soldOutClass = product.status === 'soldout' ? 'sold-out' : '';
         var sizeSelector = product.sizes.length > 1
-            ? '<div class="card-size-selector"><label for="sizeSelect-' + product.id + '">الحجم:</label><select id="sizeSelect-' + product.id + '" class="size-select" onclick="event.stopPropagation()" onchange="updateProductSize('' + product.id + '', this.value)">' + product.sizes.map(function (size, idx) { return '<option value="' + idx + '">' + getSizeLabel(size) + '</option>'; }).join('') + '</select></div>'
+            ? '<div class="card-size-selector"><label for="sizeSelect-' + product.id + '">الحجم:</label><select id="sizeSelect-' + product.id + '" class="size-select" onclick="event.stopPropagation()" onchange="updateProductSize(\'' + product.id + '\', this.value)">' + product.sizes.map(function (size, idx) { return '<option value="' + idx + '">' + getSizeLabel(size) + '</option>'; }).join('') + '</select></div>'
             : '<div class="card-size-single"><span>الحجم:</span><strong>' + getSizeLabel(sizeData) + '</strong></div>';
 
         var card = document.createElement('div');
@@ -258,10 +258,10 @@ function renderProducts(productsToShow) {
         card.innerHTML = [
             discountBadge,
             statusBadge,
-            '<div class="product-image" onclick="openPDP('' + product.id + '')" style="cursor:pointer;">',
+            '<div class="product-image" onclick="openPDP(\'' + product.id + '\')" style="cursor:pointer;">',
             '<img src="' + product.image + '" alt="' + product.name + '" loading="lazy" onerror="this.src=\'' + FALLBACK_IMAGE + '\'">',
             '</div>',
-            '<div class="product-info" onclick="openPDP('' + product.id + '')" style="cursor:pointer;">',
+            '<div class="product-info" onclick="openPDP(\'' + product.id + '\')" style="cursor:pointer;">',
             '<span class="product-brand">' + product.brand + '</span>',
             '<h3>' + product.name + '</h3>',
             '<div class="product-meta"><span>' + product.category + '</span><span class="product-size" id="productSize-' + product.id + '">' + getSizeLabel(sizeData) + '</span></div>',
@@ -269,8 +269,8 @@ function renderProducts(productsToShow) {
             '</div>',
             '<div class="product-card-controls">' + sizeSelector + '</div>',
             '<div class="product-card-actions">',
-            '<div class="qty-selector qty-sm" id="qty-' + product.id + '"><button onclick="event.stopPropagation(); changeCardQty('' + product.id + '', -1)">−</button><span id="cardQty-' + product.id + '">1</span><button onclick="event.stopPropagation(); changeCardQty('' + product.id + '', 1)">+</button></div>',
-            '<button class="btn-add-cart" onclick="addToCart(event, '' + product.id + '')" ' + (product.status === 'soldout' ? 'disabled' : '') + '>' + (product.status === 'soldout' ? 'نفذت الكمية' : 'أضيفي') + '</button>',
+            '<div class="qty-selector qty-sm" id="qty-' + product.id + '"><button onclick="event.stopPropagation(); changeCardQty(\'' + product.id + '\', -1)">−</button><span id="cardQty-' + product.id + '">1</span><button onclick="event.stopPropagation(); changeCardQty(\'' + product.id + '\', 1)">+</button></div>',
+            '<button class="btn-add-cart" onclick="addToCart(event, \'' + product.id + '\')" ' + (product.status === 'soldout' ? 'disabled' : '') + '>' + (product.status === 'soldout' ? 'نفذت الكمية' : 'أضيفي') + '</button>',
             '</div>'
         ].join('');
         grid.appendChild(card);
@@ -368,7 +368,7 @@ function setupSearch(inputId, dropdownId) {
         } else {
             dropdown.innerHTML = results.map(function (product) {
                 var pricing = getFinalPrice(product, 0, discounts);
-                return '<div class="search-item" onclick="scrollToProduct('' + product.id + '')"><img src="' + product.image + '" alt="' + product.name + '" onerror="this.src=\'' + FALLBACK_IMAGE + '\'"><div class="search-item-info"><h4>' + product.name + '</h4><span>' + product.brand + ' • ' + product.category + ' • ' + getSizeLabel(getSizeData(product, 0)) + ' • ' + formatCurrency(pricing.final) + '</span></div></div>';
+                return '<div class="search-item" onclick="scrollToProduct(\'' + product.id + '\')"><img src="' + product.image + '" alt="' + product.name + '" onerror="this.src=\'' + FALLBACK_IMAGE + '\'"><div class="search-item-info"><h4>' + product.name + '</h4><span>' + product.brand + ' • ' + product.category + ' • ' + getSizeLabel(getSizeData(product, 0)) + ' • ' + formatCurrency(pricing.final) + '</span></div></div>';
             }).join('');
         }
         dropdown.classList.add('active');
@@ -882,7 +882,7 @@ function renderCart() {
         if (!product) return '';
         var sizeData = getSizeData(product, item.sizeIdx);
         var pricing = getFinalPrice(product, item.sizeIdx, discounts);
-        return '<div class="cart-item"><img src="' + product.image + '" alt="' + product.name + '" onerror="this.src=\'' + FALLBACK_IMAGE + '\'"><div class="cart-item-info"><h4>' + product.name + '</h4><span class="cart-item-brand">' + product.brand + ' • ' + getSizeLabel(sizeData) + '</span><div class="cart-item-price">' + formatCurrency(pricing.final * item.qty) + '</div></div><div class="cart-item-qty"><button onclick="updateCartQty('' + item.id + '', ' + item.sizeIdx + ', -1)">−</button><span>' + item.qty + '</span><button onclick="updateCartQty('' + item.id + '', ' + item.sizeIdx + ', 1)">+</button></div><button class="cart-item-remove" onclick="removeFromCart('' + item.id + '', ' + item.sizeIdx + ')">✕</button></div>';
+        return '<div class="cart-item"><img src="' + product.image + '" alt="' + product.name + '" onerror="this.src=\'' + FALLBACK_IMAGE + '\'"><div class="cart-item-info"><h4>' + product.name + '</h4><span class="cart-item-brand">' + product.brand + ' • ' + getSizeLabel(sizeData) + '</span><div class="cart-item-price">' + formatCurrency(pricing.final * item.qty) + '</div></div><div class="cart-item-qty"><button onclick="updateCartQty(\'' + item.id + '\', ' + item.sizeIdx + ', -1)">−</button><span>' + item.qty + '</span><button onclick="updateCartQty(\'' + item.id + '\', ' + item.sizeIdx + ', 1)">+</button></div><button class="cart-item-remove" onclick="removeFromCart(\'' + item.id + '\', ' + item.sizeIdx + ')">✕</button></div>';
     }).join('');
 
     updateCheckoutLink(updateCartTotal());
